@@ -1,1 +1,37 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Chat Bot</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ 
+</head>
+<body>
+  <h1 class="lg">HotelAI</h1>
+  <li class="rules" style="color: bisque;
+  width: 400px;" >Rules </li>
+  <li style="color: bisque;
+  width: 400px;">Use Lowercase Keywords </li>
+  <li style="color: bisque;
+  width: 400px;">Don't Use Bad Words</li>
+  <div id="chatlog">
+    <script class="font" src="welcome.js"></script>
+    
+    
+  </div>
+  <script>
+    function submitChat() {
+      var input = $('#input').val();
+      $.post("chatbot.php", {text: input}, function(data) {
+        $("#chatlog").append(data);
+        $("#input").val("");
+      });
+    }
+  </script>
+  <div class="flexContainer">
+    
+    <input type="text"class="inputField" id="input"><button type="submit" onclick="submitChat()" class="bt">Send</button>
+  </div>
+  
+</body>
+</html>
